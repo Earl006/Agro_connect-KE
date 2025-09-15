@@ -7,7 +7,7 @@ import { User } from '../models/responses';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/api/user';
+  private apiUrl = 'https://agro-connect-ke.onrender.com/api/user';
 
   constructor(private http: HttpClient) {}
 

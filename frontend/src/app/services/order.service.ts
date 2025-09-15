@@ -17,7 +17,7 @@ interface CreateOrderRequest {
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:3000/api/order';
+  private apiUrl = 'https://agro-connect-ke.onrender.com/api/order';
 
   constructor(private http: HttpClient) {}
 

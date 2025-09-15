@@ -7,7 +7,7 @@ import { ProductResponse, Product } from '../models/responses';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3000/api/product';
+  private apiUrl = 'https://agro-connect-ke.onrender.com/api/product';
 
   constructor(private http: HttpClient) { }
 

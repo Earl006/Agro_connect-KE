@@ -7,7 +7,7 @@ import { CategoryResponse, Category } from '../models/responses';
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:3000/api/category';
+  private apiUrl = 'https://agro-connect-ke.onrender.com/api/category';
 
   constructor(private http: HttpClient) { }
   private getAuthHeaders(): HttpHeaders {
