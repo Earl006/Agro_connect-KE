@@ -114,17 +114,36 @@ export class ProduceService {
   }
 
   static async updateProduce(id: string, input: UpdateProduceInput): Promise<Produce> {
-    const data: any = { ...input };
+    const data: any = {};
     
+    // Handle regular fields
+    if (input.title !== undefined) data.title = input.title;
+    if (input.description !== undefined) data.description = input.description;
+    if (input.unit !== undefined) data.unit = input.unit;
+    if (input.date !== undefined) data.date = input.date;
+    if (input.location !== undefined) data.location = input.location;
+    if (input.status !== undefined) data.status = input.status;
+    
+    // Handle image upload
     if (input.image) {
       data.imageUrl = await uploadToCloudinary(input.image);
     }
     
-    if (input.price) {
+    // Handle price conversion
+    if (input.price !== undefined) {
       data.price = new Prisma.Decimal(input.price);
     }
-    if(input.quantity) {
+    
+    // Handle quantity conversion
+    if (input.quantity !== undefined) {
       data.quantity = parseInt(input.quantity.toString());
+    }
+    
+    // Handle category relationship
+    if (input.categoryId) {
+      data.category = {
+        connect: { id: input.categoryId }
+      };
     }
 
     return prisma.produce.update({
